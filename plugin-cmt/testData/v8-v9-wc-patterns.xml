@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patterns>
+	<!-- class update -->
+	<!-- 1) -->
+	<pattern>
+		<classref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objsrc\.(.*)BeanFinderObject</regex></name>
+			<issupertype/>
+		</classref>
+		<replace><regex>com\.ibm\.commerce\.$1\.objsrc\.$2QueryHelper</regex></replace>
+	</pattern>
+	<!-- 2) -->
+	<pattern>
+		<classref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objsrc\.(.*)BeanFinderObjectBase</regex></name>
+			<issupertype/>
+		</classref>
+		<replace><regex>com\.ibm\.commerce\.$1\.objsrc\.$2QueryHelperBase</regex></replace>
+	</pattern>
+	<!-- 4) -->
+	<pattern>
+		<classref>
+			<name>com.ibm.commerce.base.objects.JDBCFinderObject</name>
+			<issupertype/>
+		</classref>
+		<replace>com.ibm.commerce.base.objects.QueryHelper</replace>
+	</pattern>
+	<!-- 5) -->
+	<pattern>
+		<classref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objimpl\.(.*)BeanBase</regex></name>
+			<issupertype/>
+		</classref>
+		<replace><regex>com\.ibm\.commerce\.$1\.objimpl\.$2EntityBase</regex></replace>
+	</pattern>
+	<!-- 6) -->
+	<pattern>
+		<classref>
+			<name>com.ibm.commerce.base.objects.ECEntityBean</name>
+			<issupertype/>
+		</classref>
+		<replace>com.ibm.commerce.base.objects.EntityBase</replace>
+	</pattern>
+	<!-- 7) 
+	<pattern> 
+		<todo this is for customer classes classref>
+			<name>java.io.Serializable</name>
+			<issupertype><name><regex>com\.ibm\.commerce\.(.*)\.objimpl\.(.*)BeanBase</regex></name></issupertype>
+		</classref>
+		<remove/>
+	</pattern>
+	-->
+	<!-- 8)
+	<pattern>
+		<fieldref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objimpl\.(.*)BeanBase\.(.*)</regex></name>
+			<isread/>
+			<excludes>
+				<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nSubOrder</name>
+				<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nTaxCategory</name>
+			<excludes>
+		</fieldref>
+		<replace><regex>get$beanify{$3}()</regex></replace>
+	</pattern>
+	 -->
+	<!-- 9) 
+	<pattern>
+		<fieldref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objimpl\.(.*)BeanBase\.(.*)</regex></name>
+			<not><isread/></not>
+			<excludes>
+				<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nSubOrderId</name>
+				<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nTaxCategoryId</name>
+			<excludes>
+		</fieldref>
+		<replace><regex>set$beanify{$3}(${assignment})</regex></replace>
+	</pattern>
+	-->
+	<!-- 10) 
+	<pattern>
+		<fieldref>
+			<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nSubOrderId</name>
+			<isread/>
+		</fieldref>
+		<replace>getNSubOrder()</replace>
+	</pattern>
+	-->
+	<!-- 11)
+	<pattern>
+		<fieldref>
+			<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nSubOrderId</name>
+			<not><isread/></not>
+		</fieldref>
+		<replace>setNSubOrder(${assignment})</replace>
+	</pattern>
+	 -->
+	<!-- 12) 
+	<pattern>
+		<fieldref>
+			<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nTaxCategoryId</name>
+			<isread/>
+		</fieldref>
+		<replace>getNTaxCategory()</replace>
+	</pattern>
+	-->
+	<!-- 13)
+	<pattern>
+		<fieldref>
+			<name>com.ibm.commerce.taxation.objimpl.SubOrderTaxBeanBase.nTaxCategoryId</name>
+			<not><isread/></not>
+		</fieldref>
+		<replace>setNTaxCategory(${assignment})</replace>
+	</pattern>
+	 -->
+	<!-- 14) -->
+	<pattern>
+		<classref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objsrc\.(.*)BeanAccessHelper</regex></name>
+			<issupertype/>
+		</classref>
+		<replace><regex>com\.ibm\.commerce\.$1\.objsrc\.$2AccessHelper</regex></replace>
+	</pattern>
+	<!-- 15) -->
+	<pattern>
+		<classref>
+			<name><regex>com\.ibm\.commerce\.(.*)\.objsrc\.(.*)BeanAccessHelper</regex></name>
+			<issupertype/>
+		</classref>
+		<replace><regex>com\.ibm\.commerce\.$1\.objsrc\.$2AccessHelper</regex></replace>
+	</pattern>
+	
+	<!-- remove class -->
+	<!-- 16) -->
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)AccessBeanData)</regex></name>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 17) -->
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)JDBCHelper$)</regex></name>
+			<hassupertype>
+				<name>javax.ejb.EJBObject</name>
+			</hassupertype>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 18) -->
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)\.([^.]+)AccessBean$)</regex></name>
+			<hassupertype>
+				<name>com.ibm.ivj.ejb.runtime.AbstractSessionAccessBean</name>
+			</hassupertype>
+		</classref>
+		<warning><regex>Reference to $1 should be changed to $3Bean</regex></warning>
+	</pattern>
+	<!-- 19) -->
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)JDBCHelperFactory$)</regex></name>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 20) -->
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)JDBCHelperHome$)</regex></name>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 21) -->
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)Home$)</regex></name>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists.  It is recommended to change this to use the com.ibm.commerce.$2.objects.$3 JPA Entity directly, or use the com.ibm.commerce.$2.objects.$3AccessBean instead.</regex></warning>
+	</pattern>
+	<!-- 22) 
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)\.([^.]+)Key)</regex></name>
+			<hasmethod>
+				<name><regex>$3Key</regex></name>
+				<classname><regex>(com\.ibm\.commerce\.(.*)Key)</regex></classname>
+				<hasparam num="=1" />
+			</hasmethod>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+	-->
+	<!-- 23) -->
+	<pattern>
+		<classref>
+			<name><regex>(javax.naming.NamingException)</regex></name>
+			<!--
+			<isthrows>
+				<name><regex>(.*)</regex></name>
+				<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+				<hasparam num=">=0" />
+			</isthrows>
+			-->
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer thrown</regex></warning>
+	</pattern>
+	<!-- 24) -->
+	<pattern>
+		<classref>
+			<name><regex>(java.rmi.RemoteException)</regex></name>
+			<!--
+			<isthrows>
+				<name><regex>(.*)</regex></name>
+				<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+				<hasparam num=">=0" />
+			</isthrows>
+			-->
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer thrown</regex></warning>
+	</pattern>
+	<!-- 25) -->
+	<pattern>
+		<classref>
+			<name><regex>(javax.ejb.CreateException)</regex></name>
+			<!--
+			<isthrows>
+				<name><regex>(.*)</regex></name>
+				<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+				<hasparam num=">=0" />
+			</isthrows>
+			-->
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer thrown, instead, a subclass of javax.persistence.PersistenceException will be thrown</regex></warning>
+	</pattern>
+	<!-- 26) -->
+	<pattern>
+		<classref>
+			<name><regex>(javax.ejb.FinderException)</regex></name>
+			<!--
+			<isthrows>
+				<name><regex>(.*)</regex></name>
+				<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+				<hasparam num=">=0" />
+			</isthrows>
+			-->
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer thrown, instead, a subclass of javax.persistence.PersistenceException will be thrown</regex></warning>
+	</pattern>
+	<!-- 27) -->
+	<pattern>
+		<classref>
+			<name><regex>(com.ibm.commerce.wcmpi.threedsecure.ThreeDSecure(.+)Exception)</regex></name>
+			<!--
+			<isthrows>
+				<name><regex>(isSignatureValid)</regex></name>
+				<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+				<hasparam num="=1" />
+			</isthrows>
+			-->
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer thrown</regex></warning>
+	</pattern>
+	<!-- 28) -->
+	<pattern>
+		<classref>
+			<name>javax.ejb.DuplicateKeyException</name>
+			<!--
+			<iscatch />
+			-->
+		</classref>
+		<replace>javax.persistence.EntityExistsException</replace>
+	</pattern>
+	
+	<!-- method remove -->
+	<!-- 29) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbCreate)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+			<hasparam num=">=0" />
+		</methodref>
+		<warning><regex>Use of $1(...) should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 30) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbPostCreate)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objimpl\.(.*)BeanBase)</regex></classname>
+			<hasparam num=">=0" />
+		</methodref>
+		<warning><regex>Use of $1(...) should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 31) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbPostCreate)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objimpl\.(.*)BeanAccessHelper)</regex></classname>
+			<hasparam num=">=0" />
+		</methodref>
+		<warning><regex>Use of $1(...) should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 32) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getSessionContext)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 33) -->
+	<pattern>
+		<methodref>
+			<name><regex>(setSessionContext)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+			<hasparam num="=1" />
+			<!--<param>javax.ejb.SessionContext</param>-->
+		</methodref>
+		<warning><regex>Use of $1(javax.ejb.SessionContext) should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 34) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbActivate)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 35) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbCreate)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 36) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbPassivate)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Use of $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 37) -->
+	<pattern>
+		<methodref>
+			<name><regex>(ejbRemove)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 38) -->
+	<pattern>
+		<methodref>
+			<name><regex>(instantiateEJBByPrimaryKey)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)AccessBean)</regex></classname>
+			<hasparam num=">=0" />
+		</methodref>
+		<warning><regex>Use of $1(...) should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 39) -->
+	<pattern>
+		<methodref>
+			<name><regex>(defaultJNDIName)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)AccessBean)</regex></classname>
+			<hasparam num="=0" />
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 40) -->
+	<pattern>
+		<methodref>
+			<name><regex>(commitCopyHelper)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)AccessBean)</regex></classname>
+			<!-- there are two forms of commitCopyHelper - commitCopyHelper() and commitCopyHelper(ejbRef()) -->
+			<hasparam num=">=0" />
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 41) -->
+	<pattern>
+		<methodref>
+			<name><regex>(refreshCopyHelper)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)AccessBean)</regex></classname>
+			<hasparam num="=0" />
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 42) -->
+	<pattern>
+		<methodref>
+			<name><regex>(copyFields)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)EntityCreationData)</regex></classname>
+			<hasparam num="=1" />
+		</methodref>
+		<warning><regex>Use of $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 43) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getMemorySizeExcludingObjectsToScrub)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.([^.]+)Key)</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 44) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getObjectsToScrub)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.([^.]+)Key)</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 45) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getObjectSize)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.([^.]+)Key)</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 46) -->
+	<pattern>
+		<methodref>
+			<name><regex>(setScrubbedObjects)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.([^.]+)Key)</regex></classname>
+			<hasparam num="=1" />
+		</methodref>
+		<warning><regex>Reference to $1(...) should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 47) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getObjectModelFacade)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 48) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getOMF)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 49) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getObjectModuleFacade)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 50) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getPPCJDBCHelper)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 51) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getPluginController)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 52) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getPaymentsFacade)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 53) -->
+	<pattern>
+		<methodref>
+			<name><regex>(getActivityLoggerFacade)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+		</methodref>
+		<warning><regex>Reference to $1() should be removed as it no longer exists</regex></warning>
+	</pattern>
+	<!-- 54) -->
+	<pattern>
+		<methodref>
+			<name><regex>(get(.*)InEJBType)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*))</regex></classname>
+			<hasparam num=">=1" />
+		</methodref>
+		<replace><regex>get$2InEntityType</regex></replace>
+	</pattern>
+	<!-- 55) -->
+	<pattern>
+		<methodref>
+			<name><regex>(instantiateEJB)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)AccessBean)</regex></classname>
+		</methodref>
+		<replace><regex>instantiateEntity</regex></replace>
+	</pattern>
+	<!-- 56) -->
+	<pattern>
+		<methodref>
+			<name><regex>setInitKey_([A-Z])([\w\d]*)</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)AccessBean)</regex></classname>
+			<hasparam num="=1" />
+		</methodref>
+		<replace><regex>setInitKey_$tolower{$1}$2</regex></replace>
+	</pattern>
+	<!-- 57) -->
+	<pattern>
+		<methodref>
+			<name><regex>(.*)JDBCHelperAccessBean</regex></name>
+			<classname><regex>(com\.ibm\.commerce\..+\.([^.]+))</regex></classname>
+			<hassupertype>
+				<name>com.ibm.ivj.ejb.runtime.AbstractSessionAccessBean</name>
+			</hassupertype>
+			<hasparam num="=0" />
+		</methodref>
+		<warning><regex>Reference to 'new $1JDBCHelperAccessBean()' should be replaced by SessionBeanHelper.lookupSessionBean($1JDBCHelperBean.class)</regex></warning>
+	</pattern>
+</patterns>

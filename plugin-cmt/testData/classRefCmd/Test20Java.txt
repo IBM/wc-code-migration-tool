@@ -1,0 +1,8 @@
+import javax.ejb.FinderException;
+
+public class Test20Java {
+	public void run() {
+		Object o = null;
+		javax.ejb.FinderException e = (javax.ejb.FinderException) o;
+	}
+}

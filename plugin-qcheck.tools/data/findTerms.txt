@@ -1,0 +1,663 @@
+R Failed to
+R due to
+R .ZIP file
+R 10BASET
+R 24/7
+R 32-bit Windows operating system
+R A.M.
+R abort
+R acknowledgement
+R ad-hoc
+R adapter card
+R adaptor
+R addon
+R administrate
+R afterwards
+R agile
+R all caps
+R all rights reserved
+R alphabetical
+R alphameric
+R alphanumerical
+R analogue
+R and/or
+R any time
+R anytime
+R appendices
+R application program interface
+R architect
+R artefact
+R article
+R article-based information
+R assembler language
+R assembly language
+R Authorized Dealer
+R back level
+R back slash
+R back up
+R back-level
+R backlevel
+R backup
+R backward compatibility
+R backward compatible
+R Bean
+R billion
+R binary
+R bit map
+R bit stream
+R bit-field
+R bitfield
+R bitstream
+R bitstring
+R blink
+R bluewash
+R breadcrumbing
+R break point
+R bring up
+R bufferpool
+R built in
+R business partner
+R busmaster
+R call out
+R call-out
+R CamelCase
+R can not
+R cancelation
+R cancelled
+R canned
+R cardreader
+R case-insensitive
+R catalogue
+R catastrophic error
+R CD drive
+R CE
+R CEC
+R central electrical complex
+R checkbox
+R checkmark
+R children
+R chipset
+R Christian name
+R class of service
+R class-of-service
+R classpath
+R clean up
+R cleanup
+R client-server
+R codepage
+R codepoint
+R codeset
+R cold boot
+R cold start
+R cold startup
+R coldstart
+R combo box
+R command console
+R command line
+R CommServer
+R compileDo not use.Use with caution.
+R componentization
+R componentize
+R comprised of
+R concurrent peripheral operations
+R concurrent peripheral processing
+R congratulations
+R contents pane
+R context menu
+R contextual help
+R control point logical unit
+R control-click
+R controlling logical unit
+R convertor
+R corrupt
+R CPO
+R CPP
+R crash
+R cross reference
+R CRUD
+R Ctrl-click
+R cumulative fix
+R customer engineer
+R data base
+R DATABASE 2
+R datafile
+R dataflow
+R datamart
+R datapool
+R dataset
+R datasheet
+R datasource
+R datastore
+R datum
+R daughterboard
+R daylight savings time
+R debuggable
+R decompress
+R deconfigure
+R deinstall
+R deinstallation
+R deploy
+R depress
+R deregister
+R deselect
+R desire
+R desired
+R developer domain
+R diagnostic
+R dial-up
+R dialogue
+R dimmed
+R dismount
+R DO WHILE
+R domestic
+R DOS environment
+R dotted-decimal
+R double byte
+R double click
+R double quote
+R double word
+R double-word
+R down time
+R down-level
+R downlevel
+R downward compatible
+R drag and drop
+R drill down
+R drill up
+R drill-down
+R drilldown
+R dumpfile
+R dwell label
+R e-business
+R e-business Application Framework
+R e-Care
+R e-fix
+R e-mail
+R e-meeting
+R e.g.
+R eCare
+R Eclipse SDK
+R eFix
+R eLinux
+R eLiza
+R email
+R end user
+R end-user interface
+R eNetwork Software
+R eSupport
+R etc
+R etc.
+R EUI
+R executable
+R execute
+R exploit
+R exportation
+R fail over
+R failback
+R failoverDo not use. Approved by TRB
+R fastpath
+R fatal error
+R Files On Demand
+R filesystem
+R filetype
+R fill in
+R first name
+R fishstick
+R fixed disk
+R fixed disk drive
+R FixPak
+R flash storage
+R floppy
+R floppy disk
+R floppy drive
+R florescent
+R fly over help
+R flyover help
+R FOD
+R following
+R foo
+R foobar
+R foot pound
+R for instance
+R forward compatible
+R fubar
+R full word
+R gage
+R grayed
+R grayed out
+R green screen
+R grey
+R groupid
+R half word
+R hand held
+R hard boot
+R hard copy
+R hard drive
+R hard file
+R hard-disk drive
+R healthy
+R heatsink
+R help pop-up
+R hit
+R homepage
+R hostid
+R hostname
+R hot fix
+R hoverhelp
+R how-to
+R HOWTO
+R Hyperion
+R i-fix
+R i.e.
+R IBM Eclipse SDK
+R if then
+R if-then
+R iFix
+R iLinux
+R imbed
+R importation
+R in depth
+R in line
+R in-line
+R inactivate
+R inch pound
+R indices
+R Infiniband
+R info center
+R infocenter
+R infopop
+R information on
+R initial caps
+R inputDo not use. Approved by TRB
+R install
+R InstallShield
+R instant message
+R insure
+R Integrated Netfinity Server for iSeries
+R internationalization
+R Internet address
+R Intranet
+R IntranetWare for SAA
+R invalid
+R irrecoverable
+R irrecoverable error
+R iSeries Navigator
+R IT Resources Optimization
+R IWSAA
+R J2C
+R J2EE application
+R J2EE application server
+R J2EE Connector architecture
+R J2EE environment file
+R J2EE Request Profiler
+R J2EE server
+R J2EE servlet policy
+R J2EE Web Services policy
+R J2SE
+R Java 2 Connector security
+R Java 2 Platform, Enterprise Edition
+R Java 2 Platform, Standard Edition
+R Java 2 Software Development Kit Standard Edition
+R Java Development Kit
+R Java development tools
+R JavaBean
+R javadoc
+R JDK
+R JDT
+R jobstream
+R judgement
+R key store
+R kilobyte
+R labelled
+R laptop
+R last name
+R launch pad
+R left arrow key
+R left justify
+R left most
+R left-arrow key
+R left-hand
+R left-justified
+R left-most
+R legacy application
+R leverage
+R licensed programming specification
+R lifecycle
+R line cord
+R link edit
+R link editing
+R Linux/zSeries
+R loadtime
+R localization
+R log into
+R log off of
+R log onto
+R logfile
+R look and feel
+R lowercase
+R LPS
+R main directory
+R maintenance delivery vehicle
+R major version number
+R make file
+R manipulation button
+R MAPE loop
+R MAPE-K loop
+R mash up
+R master and slave
+R MDV
+R memory stick
+R menubar
+R message bank
+R meta-data
+R microcomputer
+R mid-market
+R minor version number
+R motherboard
+R mountpoint
+R mouse button 1
+R mouse button 2
+R mouse over
+R multi tier
+R multi-channel
+R multi-tier
+R multijobbing
+R multitier
+R named entity
+R nameserver
+R national language enablement
+R national language support
+R national language versionDo not use.Use with caution.
+R native language support
+R Netbook
+R NetWare for SAA
+R network-centric computing
+R new-line
+R NLS
+R NLS implementation
+R NLS-enabled
+R nonpaged
+R nonrecoverable
+R numerical
+R NWSAA
+R object oriented
+R off-line
+R off-load
+R offline storage
+R ok
+R on demand
+R on line
+R on ramp
+R on the other hand
+R on-demand
+R on-line
+R on-ramp
+R onsite
+R open-source
+R Operations Navigator
+R orientate
+R OS/2 environment
+R out-of-the-box
+R overhead
+R parent task
+R partner
+R patch
+R pathname
+R PCOMM
+R perimeter network
+R peripheral
+R PL/1
+R planar board
+R please
+R pLinux
+R plugin
+R pod cast
+R pop up
+R pop-up blocker
+R pop-up killer
+R pop-upDo not use.Use with caution.
+R power down
+R power off
+R power on
+R power up
+R pre-select
+R preload
+R preloaded
+R prepend
+R preventative
+R prior to
+R program product
+R programmed operator
+R Programming Language/I
+R pull down
+R pulldown
+R punch
+R push
+R quicktour
+R R.O.C.
+R range partitioning
+R re-occur
+R read only
+R read-me
+R readme
+R real time
+R real-time
+R recreate
+R Redbook
+R relocate hardware
+R remarketer
+R rendezvous
+R rendezvousDo not use.Use with caution.
+R reoccur
+R Republic of China
+R requestor
+R respective
+R respectively
+R retry
+R reusable
+R right adjusted
+R right arrow key
+R right double-click
+R right justify
+R right-adjust
+R right-click on
+R right-hand
+R right-justified
+R right-most
+R RISC System/6000
+R roadmap
+R ROC
+R roll back
+R roll forward
+R roll-forward
+R rollback
+R round-robin task dispatching
+R rule-set
+R run-time
+R runnable
+R runtime
+R S/390
+R SAA
+R sales representative
+R sanity check
+R schemata
+R screen shot
+R screencap
+R screenshot
+R second name
+R secondary storage
+R secure shell
+R selection button
+R Sentry
+R serial database
+R server instance
+R Service Level Reporter
+R set up
+R setup
+R shift-click
+R short cut
+R shortcut menu
+R shut down
+R shutdown
+R signoff
+R signon
+R Simple Object Access Protocol
+R single quote
+R single signon
+R slave
+R SLR
+R smartcard
+R SmartGuide
+R SME routine
+R SNA network interconnect exit
+R SNI exit
+R sockets interface
+R socksified
+R soft boot
+R soft copy
+R solution
+R sort merge
+R sort-merge
+R sort/merge
+R spawn
+R stand-alone
+R standalone
+R start up
+R style sheet
+R stylesheet
+R sub-capacity
+R sub-topic
+R sunset
+R sunsetDo not use.Use with caution.
+R supercede
+R supertask
+R surname
+R sweet spot
+R switch on
+R synch
+R synch point
+R synchronization point
+R syncpoint
+R System Administrator
+R System Information Agent
+R System-Level Manager
+R System/390
+R Systems Application Architecture
+R Systems Engineer
+R Systems Monitor
+R systems programmer
+R tablespace
+R tarball
+R task bar
+R TCP/IP network
+R team space administrator
+R tech preview
+R teleprocessing line
+R Telnet
+R testcase
+R text entry field
+R thank you
+R third-party software
+R third-party software vendor
+R thru
+R thumbstick
+R time out
+R time-out
+R timeslice
+R TME adapter
+R TME client
+R TMR client
+R TMR server
+R toggle off
+R toggle on
+R tool bar
+R tool box
+R tool kit
+R tool tip
+R tooltip
+R topic node
+R totalled
+R touch
+R Touchscreen
+R towards
+R transition
+R tree view
+R trillion
+R trouble shoot
+R trust store
+R twisty
+R TY-RAP
+R typo
+R un-install
+R unallocate
+R uncheck
+R Universal Test Environment
+R Universal Time Coordinated
+R unix
+R unselect
+R unzip
+R updatable
+R updation
+R upgradable
+R UPS
+R upward compatible
+R USASI
+R useable
+R user defined
+R user-friendly
+R username
+R usual
+R usually
+R utilize
+R V=R
+R VDM
+R Velcro
+R VEQR
+R versionDo not use. Approved by TRB
+R virtual DOS machine
+R virtual memory
+R virtual-equals-real
+R virtual-equals-virtual
+R voicemail
+R vs.
+R wait condition
+R warm boot
+R warm start
+R warmstart
+R warning notice
+R Warp
+R web
+R web cast
+R web master
+R web service
+R Web-enable
+R webinar
+R webmistress
+R website
+R Websphere
+R WebSphere Administrative Console
+R whether or not
+R whilst
+R whitepaper
+R whitespace
+R wild card
+R wildcard
+R wiring closet
+R wish
+R work flow
+R work group
+R work load
+R work space
+R work station
+R world wide
+R world wide web
+R world-wide
+R X-Windows
+R xLinux
+R zero out
+R zeroes
+R zip
+R zip file
+R zipped file
+R zipped file
+R zLinux

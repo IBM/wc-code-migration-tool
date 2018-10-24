@@ -1,0 +1,29 @@
+stages:
+        - build
+
+build_master:
+        stage: build
+        script:
+                - cd master
+                - sh gradlew clean build publish
+
+        only:
+                - master
+        tags:                   
+                - cdl
+                - v9
+
+
+build_branch:
+        stage: build
+        script:
+                - cd master
+                - sh gradlew clean build
+
+        except:
+                - master
+        tags:                   
+                - cdl
+                - v9
+
+

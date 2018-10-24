@@ -1,0 +1,6 @@
+import javax.ejb.FinderException;
+
+public class Test10Java {
+	public void run() throws javax.ejb.FinderException {
+	}
+}

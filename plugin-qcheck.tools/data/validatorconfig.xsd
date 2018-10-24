@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ -----------------------------------------------------------------
+  Copyright 2018 Trent Hoeppner
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ -----------------------------------------------------------------
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.validator.commerce.ibm.com/setup"
+	xmlns:tns="http://www.validator.commerce.ibm.com/setup"
+	elementFormDefault="qualified">
+	<element name="setup" type="tns:setup" />
+	<complexType name="validatorDef">
+		<annotation>
+			<documentation>The definition of a Validator, which includes a
+factory class, name, and default information.</documentation>
+		</annotation>
+		<sequence>
+			<element name="level" type="tns:level" maxOccurs="unbounded"
+				minOccurs="1">
+                <annotation>
+                	<documentation>A series of level detail objects, which associate data with each level available.</documentation>
+                </annotation>
+			</element>
+
+		</sequence>
+		<attribute name="name" type="string">
+			<annotation>
+				<documentation>The short name of the validator, which is used when configuring the validator within an event element.</documentation>
+			</annotation></attribute>
+		<attribute name="class" type="string">
+			<annotation>
+				<documentation>The class name of the ValidationFactory implementation, which can create the desired validator.</documentation>
+			</annotation></attribute>
+	</complexType>
+
+
+
+
+	<complexType name="level">
+        <annotation>
+        	<documentation>The level detail object, which is used to associate 
+data with a level.  The interpretation of the data 
+attribute depends on the validator.</documentation>
+        </annotation>
+        <attribute name="value" type="tns:levelEnum">
+        	<annotation>
+        		<documentation>The level for this data.  A value of "none" here will have the 
+data element ignored.</documentation>
+        	</annotation></attribute>
+		<attribute name="data" type="string">
+			<annotation>
+				<documentation>The data for the level detail, whose interpretation 
+depends on the validator being defined.  For example, 
+some validators will interpret this field as a filename, 
+which configures the validator for the given level.  If the
+ value attribute is "none", this attribute will be ignored.</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="config">
+        <annotation>
+        	<documentation>The configuration of a scope with a particular name.  The 
+scope can be used to configure groups of files according 
+to certain criteria of those files.  For example, the "file" 
+scope lets the user configure validators for filenames that 
+match a particular regular expression.
+
+There can be many configurations with the same scope, 
+although they should have different names.  When 
+determining the validators for a particular scope, if more
+than one config matches, only the first matching config 
+element is used.
+
+There is one exception to the above - there should
+be at most one "global" scope, and the name for this 
+should be ".*" (no quotes).  If more than one "global"
+scope is specified, only the first will be used.</documentation>
+        </annotation>
+        <sequence>
+			<element name="event" type="tns:event" maxOccurs="unbounded"
+				minOccurs="1">
+				<annotation>
+					<documentation>The list of events which control the validators 
+used and their levels for each particular time when 
+validation can be performed.</documentation>
+				</annotation></element>
+		</sequence>
+		<attribute name="scope" type="tns:scopeEnum">
+            <annotation>
+            	<documentation>The scope to configure.</documentation>
+            </annotation>
+		</attribute>
+		<attribute name="name" type="string">
+			<annotation>
+				<documentation>The regular expression which describes all the
+valid names for this config.  Although any
+expression can be specified, it is only meaningful
+in the context of the specified scope.  For example,
+the name pattern for a "file" scope should resemble
+filenames, with directories and extensions as 
+appropriate.  For details, see the specific scope 
+value.</documentation>
+			</annotation></attribute>
+	</complexType>
+
+	<complexType name="event">
+        <annotation>
+        	<documentation>The configuration of validators to be used for 
+a particular time when validation is performed.
+If this event occurs in a scope that has higher 
+precedence than a similar event in another scope, 
+the levels for each validator will be overriden 
+by the levels in this scope.</documentation>
+        </annotation>
+        <sequence>
+			<element name="validator" type="tns:validatorInst" maxOccurs="unbounded"
+				minOccurs="1">
+				<annotation>
+					<documentation>The list of validators and their associated levels which
+applies at the specified time.</documentation>
+				</annotation></element>
+		</sequence>
+		<attribute name="time" type="tns:timeEnum">
+            <annotation>
+            	<documentation>The time when thiis configuration is used.  See the
+TimeEnum for meanings of specific values.</documentation>
+            </annotation>
+		</attribute>
+	</complexType>
+
+	<complexType name="validatorInst">
+        <annotation>
+        	<documentation>The configuration of one validator for a particular scope and time.</documentation>
+        </annotation>
+        <attribute name="name" type="string">
+        	<annotation>
+        		<documentation>The name of the validator.  This must be a name
+specified in one of the validator elements under 
+the setup element.</documentation>
+        	</annotation></attribute>
+		<attribute name="level" type="tns:levelEnum">
+            <annotation>
+            	<documentation>The level for this validator at this scope and time.</documentation>
+            </annotation>
+		</attribute>
+	</complexType>
+	<simpleType name="levelEnum">
+        <annotation>
+        	<documentation><![CDATA[The valid level values have the following meanings:
+<ul>
+<li>none - explicitly indicates that a validator should not be used.</li>
+<li>loose - indicates that validation should be performed with the minimum number of rules.</li>
+<li>normal - indicates that validation should be performed with rules that are appropriate for most situations.</li>
+<li>strict - indicates that validation should be performed with the maximum number of rules.</li>
+</ul>]]></documentation></annotation>
+        <restriction base="string">
+			<enumeration value="none"></enumeration>
+			<enumeration value="loose"></enumeration>
+			<enumeration value="normal"></enumeration>
+			<enumeration value="strict"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="timeEnum">
+		<annotation>
+			<documentation><![CDATA[The valid timvalues have the following meanings:
+<ul>
+<li>fulltoolkitbuild - occurs when a full toolkit build is performed.</li>
+<li>incrementaltoolkitbuild - occurs when an incremental toolkit build is performed.</li>
+<li>manual - occurs when the user manually chooses to validate a file or group of files.</li>
+<li>asyoutype - occurs after the user stops typing for a short time.  Only one file will be validated each time (the file being edited).</li>
+<li>wizard - occurs when the user uses the wizard and the validation step is performed.</li>
+<li>integrationserverbuild - occurs when one or more files are built on the integration server.</li>
+<li>codereview - occurs when the user is looking at files for a code review.</li>
+</ul>]]></documentation>
+		</annotation>
+		<restriction base="string">
+			<enumeration value="manual"></enumeration>
+			<enumeration value="asyoutype"></enumeration>
+			<enumeration value="wizard"></enumeration>
+			<enumeration value="integrationserverbuild"></enumeration>
+			<enumeration value="codereview"></enumeration>
+			<enumeration value="fulltoolkitbuild"></enumeration>
+			<enumeration value="incrementaltoolkitbuild"></enumeration>
+		</restriction>
+	</simpleType>
+	<simpleType name="scopeEnum">
+        <annotation>
+        	<documentation><![CDATA[The valid scope values have the following meanings:
+<ul>
+<li>user - the CMVC ID of the user changing a file, or the CMVC ID of the user who most recently checked into CMVC.</li>
+<li>file - the filename of the file.</li>
+<li>class - the class name of the Java file.  Non-Java files will have an empty scope name for this.</li>
+<li>component - the name of the CMVC component that the file belongs to.</li>
+<li>global - the scope for all files.  All files will have an empty scope name for this.</li>
+</ul>]]></documentation>
+        </annotation>
+        <restriction base="string">
+			<enumeration value="user"></enumeration>
+			<enumeration value="file"></enumeration>
+			<enumeration value="class"></enumeration>
+			<enumeration value="component"></enumeration>
+			<enumeration value="global"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<complexType name="setup">
+        <annotation>
+        	<documentation>The root element, which is used to setup the validation framework.</documentation>
+        </annotation>
+        <sequence>
+			<element name="validator" type="tns:validatorDef" maxOccurs="unbounded"
+				minOccurs="0">
+                <annotation>
+                	<documentation>The list of validator definitions.  Any validators referred to within the config elements must be defined here.</documentation>
+                </annotation>
+			</element>
+			<element name="config" type="tns:config" maxOccurs="unbounded"
+				minOccurs="0">
+				<annotation>
+					<documentation>The list of configurations.  There need not be any configurations, although this will result in no validation being performed.</documentation>
+				</annotation></element>
+		</sequence>
+	</complexType>
+</schema>

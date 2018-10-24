@@ -1,0 +1,30 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: QCheckTools Plug-in
+Bundle-SymbolicName: com.ibm.commerce.qcheck.tools;singleton:=true
+Bundle-Version: 0.5.2
+Bundle-Activator: com.ibm.commerce.qcheck.tools.Activator
+Bundle-Vendor: Trent Hoeppner
+Require-Bundle: org.eclipse.core.runtime,
+ com.ibm.commerce.qcheck.core,
+ org.eclipse.core.resources,
+ org.eclipse.jdt.core,
+ org.eclipse.ui.editors,
+ org.eclipse.jdt.ui,
+ org.junit,
+ com.ibm.icu,
+ org.eclipse.swt,
+ com.ibm.commerce.cmt
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.ibm.commerce.qcheck.tools,
+ com.ibm.commerce.qcheck.tools.config
+Import-Package: com.ibm.commerce.cmt,
+ com.ibm.commerce.cmt.plan,
+ com.ibm.commerce.dependency.model,
+ com.ibm.commerce.qcheck.core,
+ org.eclipse.jface.preference,
+ org.eclipse.jface.text,
+ org.eclipse.jface.text.contentassist,
+ org.eclipse.ui.plugin,
+ org.eclipse.ui.texteditor.spelling

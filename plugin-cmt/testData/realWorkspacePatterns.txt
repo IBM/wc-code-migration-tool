@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patterns>
+<!--
+	<pattern>
+		<classref>
+			<name>com.ibm.commerce.base.objects.ECEntityBean</name>
+			<issupertype/>
+		</classref>
+		<replace>com.ibm.commerce.base.objects.EntityBase</replace>
+	</pattern>
+	<pattern>
+		<classref><name>com.ibm.ivj.ejb.runtime.AbstractEntityAccessBean</name></classref>
+		<replace>com.ibm.commerce.persistence.AbstractJpaEntityAccessBean</replace>
+	</pattern>
+	<pattern>
+		<classref><name>javax.naming.NamingException</name></classref>
+		<remove/>
+	</pattern>
+	<pattern>
+		<classref>
+			<name><regex>(com\.ibm\.commerce\.(.*)Bean$)</regex></name>
+			<hassupertype>
+				<name>javax.ejb.EntityBean</name>
+			</hassupertype>
+		</classref>
+		<warning><regex>Reference to $1 should be removed as it no longer exists</regex></warning>
+	</pattern>
+-->
+<!--
+	<pattern>
+		<methodref>
+			<name><regex>(commit)(Copy)(Helper)</regex></name>
+			<classname><regex>(.*)</regex></classname>
+		</methodref>
+		<replace><regex>$4.$1hello$3</regex></replace>
+	</pattern>
+	<pattern>
+		<methodref>
+			<name><regex>(commit)(Copy)(Helper)</regex></name>
+			<classname><regex>(.*)</regex></classname>
+		</methodref>
+		<remove />
+	</pattern>
+	<pattern>
+		<methodref>
+			<name><regex>EntityExistsException</regex></name>
+			<classname>javax.persistence.EntityExistsException</classname>
+			<hasparam num=">=0" />
+			<isinmethod>
+				<name><regex>([^.]*AccessBean)</regex></name>
+				<classname><regex>((.*)\.([^.]*AccessBean))</regex></classname>
+				<hasparam num=">=0" />
+			</isinmethod>
+		</methodref>
+		<remove />
+	</pattern>
+	<pattern>
+		<methodref>
+			<name><regex>EntityExistsException</regex></name>
+			<classname>javax.persistence.EntityExistsException</classname>
+			<hasparam num=">=0" />
+			<not>
+				<isinmethod>
+					<name><regex>([^.]*AccessBean)</regex></name>
+					<classname><regex>((.*)\.([^.]*AccessBean))</regex></classname>
+					<hasparam num=">=0" />
+				</isinmethod>
+			</not>
+		</methodref>
+		<remove />
+	</pattern>
+	-->
+	<pattern>
+		<methoddecl>
+			<name><regex>([^.]*AccessBean)</regex></name>
+			<classname><regex>((.*)\.([^.]*AccessBean))</regex></classname>
+			<hasparam num=">=1" />
+			<and>
+				<hasmethod>
+					<name><regex>getEntityManager</regex></name>
+					<classname>com.ibm.commerce.persistence.AbstractJpaEntityAccessBean</classname>
+					<hasparam num="=0" />
+				</hasmethod>
+				<not>
+					<hasmethod>
+						<name><regex>EntityExistsException</regex></name>
+						<classname>javax.persistence.EntityExistsException</classname>
+						<hasparam num=">=0" />
+					</hasmethod>
+				</not>
+			</and>
+		</methoddecl>
+		<warning><regex>Constructor $1() in $2 does not create an EntityExistsException that should be there.</regex></warning>
+	</pattern>
+	<!--
+	<pattern>
+		<classdecl>
+			<name><regex>(com\.ibm\.commerce\.(.*)Bean$)</regex></name>
+		</classdecl>
+		<warning><regex>$1 should be renamed to $2JPABean</regex></warning>
+	</pattern>
+	<pattern>
+		<classdecl>
+			<name><regex>(com\.ibm\.commerce\.(.*)Bean$)</regex></name>
+		</classdecl>
+		<replace><regex>com.ibm.commerce.jpa.$2JPABean</regex></replace>
+	</pattern>
+	<pattern>
+		<classdecl>
+			<name><regex>(com\.ibm\.commerce\.(.*)\._EJS.*)</regex></name>
+		</classdecl>
+		<remove />
+	</pattern>
+	<pattern>
+		<methoddecl>
+			<name><regex>commitCopyHelper</regex></name>
+			<classname><regex>(.*)</regex></classname>
+		</methoddecl>
+		<warning><regex>$1.commitCopyHelper() should be removed</regex></warning>
+	</pattern>
+	<pattern>
+		<methoddecl>
+			<name><regex>commit(Copy)Helper</regex></name>
+			<classname><regex>(.*)</regex></classname>
+		</methoddecl>
+		<replace><regex>commit$1HelperForJPA</regex></replace>
+	</pattern>
+	<pattern>
+		<methoddecl>
+			<name><regex>commit(Copy)Helper</regex></name>
+			<classname><regex>(.*)</regex></classname>
+		</methoddecl>
+		<remove />
+	</pattern>
+	<pattern>
+		<methoddecl>
+			<name><regex>(.+)</regex></name>
+			<classname><regex>(.*)</regex></classname>
+			<hasparam num=">=3" />
+		</methoddecl>
+		<warning><regex>$2.$1(...) has too many parameters</regex></warning>
+	</pattern>
+	-->
+</patterns>

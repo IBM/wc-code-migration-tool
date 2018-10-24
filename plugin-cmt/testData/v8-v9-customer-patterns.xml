@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patterns>
+	<!-- class udpate -->
+	<!-- 1) -->
+	<pattern>
+		<classdecl>
+			<name><regex>(.*)\.objects\.(.*)BeanFinderObject</regex></name>
+		</classdecl>
+		<replace><regex>$1\.objects\.$2QueryHelper</regex></replace>
+	</pattern>
+	<!-- 1) -->
+	<pattern>
+		<classdecl>
+			<name><regex>(.*)\.objsrc\.(.*)BeanFinderObjectBase</regex></name>
+			<issupertype/>
+		</classdecl>
+		<replace><regex>$1\.objsrc\.$2QueryHelperBase</regex></replace>
+	</pattern>
+	<!-- 3) -->
+	<pattern>
+		<classdecl>
+			<name><regex>(.*)\.objsrc\.(.*)BeanBase</regex></name>
+			<withmodifiers/>
+		</classdecl>
+		<replace><regex>@MappedSuperclass
+@IdClass($2)
+${modifiers} $2EntityBase</regex></replace>
+	</pattern>
+	<pattern>
+		<classref>
+			<name><regex>(find(.*))</regex></name>
+			<classname><regex>(com\.ibm\.commerce\.(.*)\.objects\.(.*)Home$)</regex></classname>
+			<hasparam num=">=1" />
+		</classref>
+		<warning><regex>The SQL for this finder method should be added to your com.ibm.commerce.$2.objects.$3 JPA entity as an a @NamedNativeQuery annotation.</regex></warning>
+	</pattern>
+
+	
+	<pattern>
+		<classref>
+			<name>com.ibm.ivj.ejb.runtime.AbstractEntityAccessBean</name>
+			<issupertype/>
+		</classref>
+		<replace>com.ibm.commerce.persistence.AbstractJpaEntityAccessBean</replace>
+	</pattern>
+	<!-- 3) -->
+	<pattern>
+		<classref>
+			<name><regex>com\.ibm\.commerce\.(.*)AccessBeanData</regex></name>
+			<issupertype/>
+		</classref>
+		<remove/>
+	</pattern>
+	<pattern>
+		<classref>
+			<name>javax.ejb.EBJObject</name>
+			<ismethodparam>
+				<name><regex>([A-Z].*)AccessBean</regex></name>
+				<hasparam num=">=1" />
+			</ismethodparam>
+		</classref>
+		<replace></replace>
+	</pattern>
+	<pattern>
+		<classref><name>javax.naming.NamingException</name></classref>
+		<remove/>
+	</pattern>
+	<pattern>
+		<classdecl>
+			<name><regex>com\.ibm\.commerce\..*\._EJS.*</regex></name>
+		</classdecl>
+		<remove/>
+	</pattern>
+	<pattern>
+		<classdecl>
+			<name><regex>com\.ibm\.commerce\..*\.(.*)Key</regex></name>
+			<hasmethod>
+				<name><regex>$1Key</regex></name>
+				<hasparam num="=1"></hasparam>
+			</hasmethod>
+		</classdecl>
+		<remove/>
+	</pattern>
+</patterns>

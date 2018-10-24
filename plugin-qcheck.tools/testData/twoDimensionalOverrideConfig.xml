@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+
+<!--
+  Copyright 2018 Trent Hoeppner
+ 
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+      http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+
+<setup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.validator.commerce.ibm.com/setup validatorconfig.xsd" xmlns="http://www.validator.commerce.ibm.com/setup">
+
+    <validator name="JavaDoc" class="com.ibm.commerce.qcheck.tools.JavaDocValidatorFactory">
+        <level value="strict" data=""/>
+        <level value="normal" data=""/>
+        <level value="loose" data=""/>
+        <level value="none" data=""/>
+    </validator>
+    <validator name="RSAR">
+        <level value="strict" data="data/baseRules.dat"/>
+        <level value="normal" data="data/baseRules.dat"/>
+        <level value="loose" data="data/baseRules.dat"/>
+        <level value="none" data=""/>
+    </validator>
+    <validator name="JGC" class="com.ibm.commerce.qcheck.tools.JGCValidatorFactory">
+        <level value="strict" data=""/>
+        <level value="normal" data=""/>
+        <level value="loose" data=""/>
+        <level value="none" data=""/>
+    </validator>
+    <config scope="class" name="TestClass04">
+        <event time="wizard">
+            <validator name="JavaDoc" level="none" />
+            <validator name="RSAR" level="none" />
+            <validator name="JGC" level="none" />
+        </event>
+        <event time="asyoutype">
+            <validator name="JavaDoc" level="none" />
+            <validator name="RSAR" level="none" />
+            <validator name="JGC" level="none" />
+        </event>
+        <event time="incrementaltoolkitbuild">
+            <validator name="JavaDoc" level="none" />
+            <validator name="RSAR" level="none" />
+            <validator name="JGC" level="none" />
+        </event>
+        <event time="fulltoolkitbuild">
+            <validator name="JavaDoc" level="none" />
+            <validator name="RSAR" level="none" />
+            <validator name="JGC" level="none" />
+        </event>
+    </config>
+    <config scope="file" name=".*\\TestClass04\.java">
+        <event time="wizard">
+            <validator name="JavaDoc" level="loose" />
+            <validator name="RSAR" level="loose" />
+            <validator name="JGC" level="loose" />
+        </event>
+        <event time="asyoutype">
+            <validator name="JavaDoc" level="loose" />
+            <validator name="RSAR" level="loose" />
+            <validator name="JGC" level="loose" />
+        </event>
+        <event time="integrationserverbuild">
+            <validator name="JavaDoc" level="normal" />
+            <validator name="RSAR" level="loose" />
+            <validator name="JGC" level="loose" />
+        </event>
+    </config>
+</setup>

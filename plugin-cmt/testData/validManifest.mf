@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: Enablement-BaseComponentsLogic.jar Enablement-Relationship
+ ManagementLogic.jar Price-Server-FEP.jar Price-DataObjects.jar Enable
+ ment-RelationshipManagementData.jar
+

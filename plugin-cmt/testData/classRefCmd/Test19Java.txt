@@ -1,0 +1,6 @@
+import javax.ejb.FinderException;
+
+public class Test19Java implements FinderException{
+	public void run() {
+	}
+}

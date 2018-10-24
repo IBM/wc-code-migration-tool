@@ -1,0 +1,2 @@
+includeFlat 'eclipse-repository',
+	'plugin-cmt'

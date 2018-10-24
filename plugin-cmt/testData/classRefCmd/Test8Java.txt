@@ -1,0 +1,5 @@
+import javax.ejb.FinderException;
+
+public class Test8Java {
+	javax.ejb.FinderException e = null;
+}

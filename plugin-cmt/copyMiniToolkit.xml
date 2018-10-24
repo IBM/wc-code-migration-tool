@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ =================================================================
+  Licensed Materials - Property of IBM
+
+  WebSphere Commerce
+
+  (C) Copyright IBM Corp. 2009, 2014 All Rights Reserved.
+
+  US Government Users Restricted Rights - Use, duplication or
+  disclosure restricted by GSA ADP Schedule Contract with
+  IBM Corp.
+ =================================================================
+-->
+
+<!--
+	This script copies some files from a green toolkit to create a miniToolkit
+	for test purposes.
+-->
+<project name="copyMiniToolkit" basedir="." default="createAll">
+	<target name="createAll">
+		<antcall target="create">
+			<arg name="dir.toolkit.source" value="H:/" />
+			<arg name="dir.toolkit.name" value="WCDE_INT80" />
+			<arg name="dir.runtime.name" value="base_v85_stub" />
+			<arg name="dir.target" value="testData/miniToolkit.v8" />
+		</antcall>
+	</target>
+	
+    <target name="create">
+    	<delete dir="${dir.target}" />
+    	
+    	<mkdir dir="${dir.target}/SDP" />
+    	<copy todir="${dir.target}/SDP">
+            <fileset dir="${dir.toolkit.source}/SDP">
+                <include name="runtimes/${dir.runtime.name}/plugins/*" />
+            </fileset>
+    	</copy>
+
+    	<mkdir dir="${dir.target}/${dir.toolkit.name}/workspace" />
+    	<!-- leave this out for now, maybe if we analyze JSPs later
+    	<copy todir="testData/miniToolkit/${dir.toolkit.name}/workspace">
+            <fileset dir="${dir.toolkit.source}/${dir.toolkit.name}/workspace">
+                <include name="Stores/.project" />
+                <include name="Stores/**/*.jsp" />
+                <include name="Stores/**/*.jspf" />
+                <include name="Stores/**/*.js" />
+                <include name="Stores/**/*.jar" />
+            </fileset>
+    	</copy>
+    	-->
+    	<copy todir="${dir.target}/${dir.toolkit.name}/workspace">
+            <fileset dir="${dir.toolkit.source}/${dir.toolkit.name}/workspace">
+                <include name="WC/.project" />
+                <include name="WC/Enablement-BusinessContextEngineAdvancedData.jar" />
+                <include name="WC/Enablement-BusinessContextEngineAdvancedInterface.jar" />
+                <include name="WC/Enablement-BusinessContextEngineData.jar" />
+                <include name="WC/Enablement-BusinessContextEngineInterface.jar" />
+                <include name="WC/Enablement-BusinessContextEngineLogic.jar" />
+                <include name="WC/Enablement-JCAHTTPConnector.rar" />
+                <include name="WC/Foundation-Core.jar" />
+                <include name="WC/META-INF/**" />
+                <include name="WC/lib/ant-commons-net.jar" />
+                <include name="WC/lib/commons-beanutils.jar" />
+                <include name="WC/lib/commons-collections.jar" />
+                <include name="WC/lib/commons-lang.jar" />
+                <include name="WC/lib/commons-lang3.jar" />
+                <include name="WC/lib/JSON4J.jar" />
+                <include name="WC/lib/jsr311-api.jar" />
+                <include name="WC/lib/payment/**" />
+            </fileset>
+    	</copy>
+    	<copy todir="${dir.target}/${dir.toolkit.name}/workspace">
+            <fileset dir="${dir.toolkit.source}/${dir.toolkit.name}/workspace">
+                <include name="WebSphereCommerceServerExtensionsData/**" />
+                <include name="WebSphereCommerceServerExtensionsLogic/**" />
+            </fileset>
+    	</copy>
+
+    	<property name="subdir.project.metadata" value="${dir.toolkit.name}/workspace/.metadata/.plugins/org.eclipse.core.resources/.projects" />
+    	<!--
+    	<mkdir dir="testData/miniToolkit/${subdir.project.metadata}" />
+    	<copy todir="testData/miniToolkit//${subdir.project.metadata}">
+            <fileset dir="${dir.toolkit.source}//${subdir.project.metadata}">
+                <include name="Stores/**" />
+                <include name="WC/**" />
+                <include name="WebSphereCommerceServerExtensionsData/**" />
+                <include name="WebSphereCommerceServerExtensionsLogic/**" />
+            </fileset>
+		</copy>
+    	-->
+    	<!-- make files so the dir is not empty for git -->
+    	<echo file="${dir.target}/${subdir.project.metadata}/WC/.keep" message="" />
+    	<echo file="${dir.target}/${subdir.project.metadata}/WebSphereCommerceServerExtensionsData/.keep" message="" />
+    	<echo file="${dir.target}/${subdir.project.metadata}/WebSphereCommerceServerExtensionsLogic/.keep" message="" />
+    </target>
+</project>
+	

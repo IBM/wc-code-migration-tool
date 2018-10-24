@@ -1,0 +1,5 @@
+import javax.ejb.FinderException;
+
+public class Test9Java {
+	FinderException e = null;
+}

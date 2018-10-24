@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<patterns>
+	<pattern>
+		<classref><name>javax.ejb.FinderException</name></classref>
+		<replace>java.net.HelloException</replace>
+	</pattern>
+</patterns>

@@ -1,0 +1,55 @@
+buildscript {
+  repositories {
+		maven {
+			url 'http://bxv8v156.cn.ibm.com:8081/nexus/content/groups/public'
+		}
+		//mavenLocal()
+		//jcenter()
+  }
+
+  dependencies {
+    classpath 'org.akhikhl.wuff:wuff-plugin:+'
+  }
+}
+
+apply plugin: 'org.akhikhl.wuff.eclipse-config'
+
+wuff {
+        selectedEclipseVersion = '4.4'
+        eclipseVersion('4.4') {
+                eclipseArchiveMirror = 'http://wcrad.torolab.ibm.com/eclipseMirror/'
+                eclipseMirror = 'http://wcrad.torolab.ibm.com/eclipseMirror/'
+        }
+}
+
+subprojects {
+
+	repositories {
+		maven {
+			url 'http://bxv8v156.cn.ibm.com:8081/nexus/content/groups/public'
+		}
+		//mavenLocal()
+		//jcenter()
+	}
+	
+	if(name == "eclipse-repository") {
+		apply plugin: 'org.akhikhl.wuff.eclipse-feature'
+		apply plugin: 'org.akhikhl.wuff.eclipse-repository'
+	}
+	else {
+		//all the eclipse plugins are built using wuff eclipse-bundle and java gradle plugin
+		apply plugin: 'java'
+		apply plugin: 'org.akhikhl.wuff.eclipse-bundle'
+
+		//all plugins require ANT for build
+		dependencies {
+			compile 'org.apache.ant:ant:1.9.2'
+			compile 'junit:junit:4.+'
+		}
+	}
+	
+	///////////////////
+	// Publishing logic
+	///////////////////
+	apply from: "${rootDir}/gradle/publishing.gradle"
+}

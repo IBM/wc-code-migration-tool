@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ValidationCore Plug-in
+Bundle-SymbolicName: com.ibm.commerce.qcheck.core
+Bundle-Version: 0.5.2
+Bundle-Activator: com.ibm.commerce.qcheck.core.Activator
+Bundle-Vendor: Trent Hoeppner
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.jdt.core;bundle-version="3.4.5",
+ org.eclipse.core.resources,
+ org.eclipse.swt;bundle-version="3.4.2",
+ org.junit;bundle-version="3.8.2"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.ibm.commerce.qcheck.core,
+ com.ibm.commerce.qcheck.core.comment
+Bundle-ClassPath: lib/hamcrest-core-1.1.jar,
+ lib/hamcrest-library-1.1.jar,
+ lib/jmock-2.5.1.jar,
+ .

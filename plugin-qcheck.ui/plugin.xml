@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="4.5"?>
+<plugin>
+
+   <extension
+         id="builder"
+         name="WS Validation Builder"
+         point="org.eclipse.core.resources.builders">
+      <builder
+            hasNature="true">
+         <run
+               class="com.ibm.commerce.qcheck.ui.builder.ValidationBuilder">
+         </run>
+      </builder>
+   </extension>
+   <extension
+         id="nature"
+         name="WS Validation Nature"
+         point="org.eclipse.core.resources.natures">
+      <runtime>
+         <run
+               class="com.ibm.commerce.qcheck.ui.builder.ValidationNature">
+         </run>
+      </runtime>
+      <builder
+            id="com.ibm.commerce.qcheck.ui.builder">
+      </builder>
+   </extension>
+    <extension
+           point="org.eclipse.ui.commands">
+        <category
+              description="Format Java Source"
+              id="com.ibm.commerce.qcheck.ui"
+              name="Format">
+        </category>
+        <command
+              categoryId="com.ibm.commerce.qcheck.ui"
+              description="Format Java and Remove Line Endings"
+              id="com.ibm.commerce.qcheck.ui.FullFormat"
+              name="Full Format Java">
+        </command>
+    </extension>
+   <extension
+         point="org.eclipse.ui.actionSets">
+      <actionSet
+            label="WC Validator"
+            visible="true"
+            id="com.ibm.commerce.qcheck.ui.buttons">
+         <action
+               icon="icons/buildvalidation.png"
+               class="com.ibm.commerce.qcheck.ui.builder.BuilderAction"
+               style="toggle"
+               state="false"
+               label="Build Validation Toggle"
+               tooltip="Turn on/off build validation"
+               toolbarPath="wcValidatorButtons"
+               id="com.ibm.commerce.qcheck.ui.Builder">
+         </action>
+         <action
+               icon="icons/asyoutypevalidation.png"
+               class="com.ibm.commerce.qcheck.ui.builder.AsYouTypeAction"
+               style="toggle"
+               state="false"
+               label="As-you-type Validation Toggle"
+               tooltip="Turn on/off as-you-type validation"
+               toolbarPath="wcValidatorButtons"
+               id="com.ibm.commerce.qcheck.ui.asYouType">
+         </action>
+         <action 
+                icon="icons/qcheckready.png"
+                class="com.ibm.commerce.qcheck.update.ui.ManuallyDetectAction" 
+                style="push" 
+                label="Update Status Button"
+                tooltip="No available updates"
+                toolbarPath="wcValidatorButtons" 
+                id="com.ibm.commerce.qcheck.update.ui.CheckForAvaliables"> 
+        </action> 
+      </actionSet>
+      <actionSet
+            label="WC Full Formatter"
+            visible="true"
+            id="com.ibm.commerce.qcheck.ui.commands">
+            <action
+                    id="com.ibm.commerce.qcheck.ui.FullFormatAction"
+                    label="Full Format"
+                    definitionId="com.ibm.commerce.qcheck.ui.FullFormat"
+                    class="com.ibm.commerce.qcheck.ui.internal.FullFormatAction">
+                <selection class="org.eclipse.core.resources.IFile" name="*.java" />
+            </action>
+      </actionSet>
+   </extension>
+   
+   <extension
+         id="javaProblem"
+         name="Java Problem"
+         point="org.eclipse.core.resources.markers">
+      <super
+            type="org.eclipse.core.resources.problemmarker">
+      </super>
+      <persistent
+            value="true">
+      </persistent>
+   </extension>
+   
+   <extension
+           id="com.ibm.commerce.qcheck.ui.update.startup"
+           name="com.ibm.commerce.qcheck.ui.update.startup"
+           point="org.eclipse.ui.startup">
+           <startup class="com.ibm.commerce.qcheck.update.ui.CheckAvailableStartup"/>
+     </extension>
+   
+    <extension point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator 
+                class="com.ibm.commerce.qcheck.ui.builder.ValidationMarkerResolutionGenerator" 
+                markerType="com.ibm.commerce.qcheck.ui.javaProblem">
+        </markerResolutionGenerator>
+    </extension>
+    
+    <extension
+      point="org.eclipse.ui.workbench.texteditor.rulerColumns">
+      <column
+        id="com.ibm.commerce.qcheck.ui.quickAssistColumn"
+        name="Quick Assist"
+        class="com.ibm.commerce.qcheck.ui.internal.QuickAssistColumn"
+        enabled="true"
+        global="true"
+        includeInMenu="false">
+        <placement
+           gravity="0.9">
+           <after id="org.eclipse.ui.editors.columns.annotations"/>
+        </placement>
+        <targetClass
+           class="org.eclipse.ui.editors.text.TextEditor">
+        </targetClass>
+      </column>
+    </extension>
+</plugin>
