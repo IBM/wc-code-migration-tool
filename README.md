@@ -9,7 +9,7 @@ in Eclipse.
 
 # Users Manual
 
-> Note The Code Migration Tool is subject to the terms of the accompanying Apache 2.0 License agreement, which is included in the package. By downloading and by using this package, you agree to those license terms.
+> Note: The Code Migration Tool is subject to the terms of the accompanying Apache 2.0 License agreement, which is included in the package. By downloading and by using this package, you agree to those license terms.
 
 1. Download the [CMTv1.2.zip](CMTv1.2.zip) package. 
 2. Extract the package to a temporary directory.
@@ -27,35 +27,37 @@ in Eclipse.
 ```
 6. Copy the v8-v9-wc-patterns.xml file to the following directory. 
 ```
-WCDE_installdir\logs
+   WCDE_installdir\logs
 ```
 7. Open a command prompt window and run the following command and change to the following directory. 
 ```
-C:\Program Files\IBM\SDP
+   C:\Program Files\IBM\SDP
 ```
 8. To ensure that Eclipse recognizes the plug-ins, run the following command. 
 ```
-eclipsec -clean 
+   eclipsec -clean 
 ```
-   - Optional: Increase the maximum heap size of Rational Application Developer before you run the tool. The tool loads previous and current APIs in memory when it performs the analysis. 
+   > Optional: Increase the maximum heap size of Rational Application Developer before you run the tool. The tool loads previous and current APIs in memory when it performs the analysis. 
    1. Open the C:\IBM\SDP\eclipse.ini file for editing.
    2. Update the -Xmx option to -Xmx2560m. You can increase this value if needed.
    3. Save and close the file. 
 
-      - If you are prompted for a workspace location, Eclipse successfully recognized the plug-ins. You can exit the command prompt. 
+      > If you are prompted for a workspace location, Eclipse successfully recognized the plug-ins. You can exit the command prompt. 
 
 9. Run the Code Migration Tool by using either of the following methods. 
    1. Command prompt:
       1. Open a command prompt, and switch to your WCDE_installdir\bin directory.
       2. Run the following command.
-      3. cmt.bat [-planfile plan filename] 
 ```
-         [-logfile log filename] -patternfile pattern filename [-patternfile pattern filename […]] 
+         cmt.bat [-planfile plan filename] [-logfile log filename] -patternfile pattern filename [-patternfile pattern filename […]] 
 ```
+
          Where: 
+
 ```
          planfile
 ```
+
          - Optional. The name of the output file that is created when the command runs. The file contains the following information.
            - Issue number
            - Pattern that detected the issue
@@ -64,21 +66,25 @@ eclipsec -clean
            - A short description of the problem
            - The code that was detected, and the replacement text (if any)
          The default value is for the plan file cmtplan.xml.
+
 ```
          patternfile
 ```
+
          - Required. The name of a file that contains which patterns to use. At least one -patternfile must be given, and more than one might be given.
+
 ```
          logfile
 ```
+
          - Optional. The name of the log file. The default value is cmt.log.
    2. Graphical user interface:
       1. Open WebSphere Commerce Developer. 
       2. Click on the  Code Migration Tool (CMT) icon from the menu. Clicking this icon adds a nature for the plug-in to each of your .project files in each workspace project.
-> Note When you close Rational Application Developer, the CMT user interface is disabled and must be started again if you want to run the CMT utility.
       3. Perform a build. This triggers a rebuild of all your projects.
+      > Note When you close Rational Application Developer, the CMT user interface is disabled and must be started again if you want to run the CMT utility.
 
-The CMT runs on all .java file in your workspace. After the build is completed, any issues are marked in the Marker view in WebSphere Commerce Developer. Look for the CMT markers in the Java Problem heading.
+CMT runs on all .java file in your workspace. After the build is completed, any issues are marked in the Marker view in WebSphere Commerce Developer. Look for the CMT markers in the Java Problem heading.
 
 Regardless of which method you chose to run the Code Migration Tool, either by command prompt or interface during a build, you must review and correct any of the issues that are found by the tool. 
 
