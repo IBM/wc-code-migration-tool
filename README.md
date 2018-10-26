@@ -14,50 +14,46 @@ in Eclipse.
 1. Download the [CMTv1.2.zip](CMTv1.2.zip) package. 
 2. Extract the package to a temporary directory.
 3. Copy the plug-in JAR files to the following directory. If a subdirectory does not exist, create it. 
-```
+   ```
    SDP\dropins\cmt\eclipse\plugins
-```
+   ```
 4. Copy the cmt.bat file to the following directory. 
-```
+   ```
    WCDE_installdir\bin
-```
+   ```
 5. Copy the api-v8.zip file to the following directory.
-```
+   ```
    WCDE_installdir\logs
-```
+   ```
 6. Copy the v8-v9-wc-patterns.xml file to the following directory. 
-```
+   ```
    WCDE_installdir\logs
-```
+   ```
 7. Open a command prompt window and run the following command and change to the following directory. 
-```
+   ```
    C:\Program Files\IBM\SDP
-```
+   ```
 8. To ensure that Eclipse recognizes the plug-ins, run the following command. 
-```
+   ```
    eclipsec -clean 
-```
+   ```
    > Optional: Increase the maximum heap size of Rational Application Developer before you run the tool. The tool loads previous and current APIs in memory when it performs the analysis. 
    1. Open the C:\IBM\SDP\eclipse.ini file for editing.
    2. Update the -Xmx option to -Xmx2560m. You can increase this value if needed.
    3. Save and close the file. 
-
       > If you are prompted for a workspace location, Eclipse successfully recognized the plug-ins. You can exit the command prompt. 
-
 9. Run the Code Migration Tool by using either of the following methods. 
    1. Command prompt:
       1. Open a command prompt, and switch to your WCDE_installdir\bin directory.
       2. Run the following command.
-```
-         cmt.bat [-planfile plan filename] [-logfile log filename] -patternfile pattern filename [-patternfile pattern filename […]] 
-```
-
+         ```
+         cmt.bat [-planfile plan filename] [-logfile log filename]
+             -patternfile pattern filename [-patternfile pattern filename […]] 
+         ```
          Where: 
-
-```
+         ```
          planfile
-```
-
+         ```
          - Optional. The name of the output file that is created when the command runs. The file contains the following information.
            - Issue number
            - Pattern that detected the issue
@@ -66,17 +62,13 @@ in Eclipse.
            - A short description of the problem
            - The code that was detected, and the replacement text (if any)
          The default value is for the plan file cmtplan.xml.
-
-```
+         ```
          patternfile
-```
-
+         ```
          - Required. The name of a file that contains which patterns to use. At least one -patternfile must be given, and more than one might be given.
-
-```
+         ```
          logfile
-```
-
+         ```
          - Optional. The name of the log file. The default value is cmt.log.
    2. Graphical user interface:
       1. Open WebSphere Commerce Developer. 
