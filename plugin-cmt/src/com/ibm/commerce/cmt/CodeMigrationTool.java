@@ -247,23 +247,35 @@ public class CodeMigrationTool implements IApplication {
 					Configuration configuration = createConfiguration(workspace, patternFilenames, null);
 					createPlan(configuration, context, true);
 				} else if (mode.equals("migrate")) {
-					parseWorkspace(workspaceDir, factory, dataJARFilter);
+//					parseWorkspace(workspaceDir, factory, dataJARFilter);
+
+					JavaItemIndex workspaceIndex = new JavaItemIndex("workspace", index);
+					JavaItemFactory workspaceFactory = new JavaItemFactory(workspaceIndex);
+
+					LoadingManager loadingManager = new LoadingManager();
+					factory = loadingManager.loadProjects(workspaceFactory, workspaceDir, Collections.emptySet(),
+							dataJARFilter, false);
+					this.factory = factory;
+					index = factory.getIndex();
+
+					workspace = new EclipseWorkspace(new IWorkspaceWrapperExternal(workspaceDir, false, false, null),
+							new ProjectLoader(factory), factory, true);
 
 					context.set(Context.Prop.JAVA_ITEM_INDEX, index);
 					context.set(Context.Prop.DEPENDENCY_WORKSPACE, workspace);
 
 					Configuration configuration = createConfiguration(workspace, patternFilenames, null);
-					File planFile = new File(planFilename);
+//					File planFile = new File(planFilename);
 					Plan plan;
-					if (planFile.exists()) {
-						log("Loading plan");
-						// TODO
-						log("NEED TO IMPLEMENT LOADING OF AN EXISTING PLAN FILE.");
-						return EXIT_OK;
-					} else {
-						log("Plan file does not exist, creating plan");
+//					if (planFile.exists()) {
+//						log("Loading plan");
+//						// TODO
+//						log("NEED TO IMPLEMENT LOADING OF AN EXISTING PLAN FILE.");
+//						return EXIT_OK;
+//					} else {
+//						log("Plan file does not exist, creating plan");
 						plan = createPlan(configuration, context, true);
-					}
+//					}
 
 					log("Executing plan");
 					plan.execute(configuration, context);
