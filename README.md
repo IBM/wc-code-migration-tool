@@ -71,7 +71,12 @@ This project is used to migrate APIs from one version to another. This is accomp
       2. Click on the  Code Migration Tool (CMT) icon from the menu. Clicking this icon adds a nature for the plug-in to each of your .project files in each workspace project.
       3. Perform a build. This triggers a rebuild of all your projects.
       > Note When you close Rational Application Developer, the CMT user interface is disabled and must be started again if you want to run the CMT utility.
-
+10. (Optional) After reviewing the changes, you can run the tool again to perform the available replacement steps for you.  This must be done on the command line.  To do so, add the parameters "-mode migrate" to the command line in step 9.1.  For example:
+    ```
+    cmt.bat -patternfile ..\logs\v8-v9-wc-patterns.xml -mode migrate
+    ```
+	When running CMT in this way, the &lt;log&gt; messages in the plan will be written to the log file, and the &lt;replaceinfile&gt; steps will be performed.
+	  
 CMT runs on all .java file in your workspace. After the build is completed, any issues are marked in the Marker view in WebSphere Commerce Developer. Look for the CMT markers in the Java Problem heading.
 
 Regardless of which method you chose to run the Code Migration Tool, either by command prompt or interface during a build, you must review and correct any of the issues that are found by the tool. 
@@ -79,3 +84,5 @@ Regardless of which method you chose to run the Code Migration Tool, either by c
 If you ran the utility through command prompt, review the cmtplan.xml, and take all necessary actions to resolve the issues that are flagged. 
 
 If you ran the utility by starting a build in WebSphere Commerce Developer, switch to your Markers view, and click through the markers that are flagged CMT. Clicking these flags opens the corresponding java file and locates the related code. Some markers offer a Quick Fix option. If you hover or select the applicable code, a potential fix is provided. You can then click the Quick Fix icon to perform the substitution.
+
+You can customize the v8-v9-wc-patterns.xml file by changing some of the &lt;log&gt; steps with &lt;replaceinfile&gt; steps, or vice versa.  You can also create new patterns, remove patterns, or modify patterns to suit your needs.  Use the existing patterns as examples.
