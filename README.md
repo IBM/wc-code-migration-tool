@@ -3,10 +3,6 @@
 # Overview
 This project is used to migrate APIs from one version to another. This is accomplished through patterns written in XML pattern files. This project includes a pattern file from WebSphere Commerce Version 8 to WebSphere Commerce Version 9.
 
-This repository contains various eclipse plugins.  Gradle build script is added for building the plugins. It will 
-produce one archive, which can be used as a installable source 
-in Eclipse.
-
 # Users Manual
 
 > Note: The Code Migration Tool is subject to the terms of the accompanying Apache 2.0 License agreement, which is included in the package. By downloading and by using this package, you agree to those license terms.
@@ -29,7 +25,7 @@ in Eclipse.
    ```
    WCDE_installdir\logs
    ```
-7. Open a command prompt window and run the following command and change to the following directory. 
+7. Open a command prompt window and change to the following directory. 
    ```
    C:\Program Files\IBM\SDP
    ```
@@ -44,7 +40,7 @@ in Eclipse.
       > If you are prompted for a workspace location, Eclipse successfully recognized the plug-ins. You can exit the command prompt. 
 9. Run the Code Migration Tool by using either of the following methods. 
    1. Command prompt:
-      1. Open a command prompt, and switch to your WCDE_installdir\bin directory.
+      1. Open a command prompt, and change to your WCDE_installdir\bin directory.
       2. Run the following command.
          ```
          cmt.bat [-planfile plan filename] [-logfile log filename]
