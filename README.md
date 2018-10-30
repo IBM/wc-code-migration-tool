@@ -86,3 +86,5 @@ If you ran the utility through command prompt, review the cmtplan.xml, and take 
 If you ran the utility by starting a build in WebSphere Commerce Developer, switch to your Markers view, and click through the markers that are flagged CMT. Clicking these flags opens the corresponding java file and locates the related code. Some markers offer a Quick Fix option. If you hover or select the applicable code, a potential fix is provided. You can then click the Quick Fix icon to perform the substitution.
 
 You can customize the v8-v9-wc-patterns.xml file by changing some of the &lt;log&gt; steps with &lt;replaceinfile&gt; steps, or vice versa.  You can also create new patterns, remove patterns, or modify patterns to suit your needs.  Use the existing patterns as examples.
+
+Whoopee
