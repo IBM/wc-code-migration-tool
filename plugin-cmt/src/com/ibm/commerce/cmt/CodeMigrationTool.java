@@ -20,11 +20,14 @@ package com.ibm.commerce.cmt;
 
 import java.io.BufferedOutputStream;
 import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -247,7 +250,7 @@ public class CodeMigrationTool implements IApplication {
 					Configuration configuration = createConfiguration(workspace, patternFilenames, null);
 					createPlan(configuration, context, true);
 				} else if (mode.equals("migrate")) {
-//					parseWorkspace(workspaceDir, factory, dataJARFilter);
+					// parseWorkspace(workspaceDir, factory, dataJARFilter);
 
 					JavaItemIndex workspaceIndex = new JavaItemIndex("workspace", index);
 					JavaItemFactory workspaceFactory = new JavaItemFactory(workspaceIndex);
@@ -265,17 +268,18 @@ public class CodeMigrationTool implements IApplication {
 					context.set(Context.Prop.DEPENDENCY_WORKSPACE, workspace);
 
 					Configuration configuration = createConfiguration(workspace, patternFilenames, null);
-//					File planFile = new File(planFilename);
+					// File planFile = new File(planFilename);
 					Plan plan;
-//					if (planFile.exists()) {
-//						log("Loading plan");
-//						// TODO
-//						log("NEED TO IMPLEMENT LOADING OF AN EXISTING PLAN FILE.");
-//						return EXIT_OK;
-//					} else {
-//						log("Plan file does not exist, creating plan");
-						plan = createPlan(configuration, context, true);
-//					}
+					// if (planFile.exists()) {
+					// log("Loading plan");
+					// // TODO
+					// log("NEED TO IMPLEMENT LOADING OF AN EXISTING PLAN
+					// FILE.");
+					// return EXIT_OK;
+					// } else {
+					// log("Plan file does not exist, creating plan");
+					plan = createPlan(configuration, context, true);
+					// }
 
 					log("Executing plan");
 					plan.execute(configuration, context);
@@ -798,7 +802,18 @@ public class CodeMigrationTool implements IApplication {
 			long beforeTime = System.currentTimeMillis();
 			context.set(Context.Prop.FILE, source);
 			for (Pattern pattern : configuration.getPatterns()) {
-				pattern.findInCurrentFileForPlan(context, plan);
+				try {
+					pattern.findInCurrentFileForPlan(context, plan);
+				} catch (RuntimeException e) {
+					ByteArrayOutputStream out = new ByteArrayOutputStream();
+					XMLUtil.writeXML(pattern, out);
+					out.flush();
+					out.close();
+					String patternText = out.toString();
+					log("Error occurred while analyzing file " + source.getAbsolutePath() + " with pattern "
+							+ patternText);
+					log(e);
+				}
 			}
 
 			int afterIssues = plan.getIssues().size();
@@ -848,6 +863,24 @@ public class CodeMigrationTool implements IApplication {
 		}
 
 		return true;
+	}
+
+	/**
+	 * Logs the given exception to a writer which is linked to the log file.
+	 * 
+	 * @param t
+	 *            The exception to log. This value cannot be null.
+	 * 
+	 * @throws IOException
+	 *             If an error occurs while writing to the log file.
+	 */
+	private void log(Throwable t) throws IOException {
+		StringWriter stringWriter = new StringWriter();
+		PrintWriter printWriter = new PrintWriter(new BufferedWriter(stringWriter));
+		t.printStackTrace(printWriter);
+		printWriter.flush();
+		String error = stringWriter.toString();
+		log(error);
 	}
 
 	/**
